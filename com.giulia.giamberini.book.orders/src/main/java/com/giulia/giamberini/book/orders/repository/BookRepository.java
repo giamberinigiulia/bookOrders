@@ -8,4 +8,8 @@ public interface BookRepository {
 
 	public List<Book> findAll();
 
+	public Book findByISBN(String string);
+	
+	public void save(Book bookToAdd);
+
 }
