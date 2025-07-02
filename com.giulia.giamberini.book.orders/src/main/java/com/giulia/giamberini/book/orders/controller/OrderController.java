@@ -30,6 +30,11 @@ public class OrderController {
 	}
 
 	public void deleteOrder(Order orderToRemove) {
+		if (orderRepository.findByID(orderToRemove.getID()) == null) {
+			bookOrdersView.showErrorNoOrderFound("The order with id " + orderToRemove.getID() + " is not found",
+					orderToRemove);
+			return;
+		}
 		orderRepository.delete(orderToRemove.getID());
 		bookOrdersView.orderRemoved(orderToRemove);
 	}
