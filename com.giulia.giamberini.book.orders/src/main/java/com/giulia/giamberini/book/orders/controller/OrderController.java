@@ -19,6 +19,12 @@ public class OrderController {
 	}
 
 	public void newOrder(Order orderToAdd) {
+		Order existingOrder = orderRepository.findByID(orderToAdd.getID());
+		if (existingOrder != null) {
+			bookOrdersView.showErrorAlreadyExistingOrder("The order with id " + orderToAdd.getID() + " already exists",
+					existingOrder);
+			return;
+		}
 		orderRepository.save(orderToAdd);
 		bookOrdersView.orderAdded(orderToAdd);
 	}
