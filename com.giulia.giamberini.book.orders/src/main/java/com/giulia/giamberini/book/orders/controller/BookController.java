@@ -19,6 +19,11 @@ public class BookController {
 	}
 	
 	public void newBook(Book bookToAdd) {
+		Book bookAlreadyExisting = bookRepository.findByISBN(bookToAdd.getISBN());
+		if (bookAlreadyExisting != null) {
+			bookOrdersView.showErrorAlreadyExistingBook("The ISBN " + bookToAdd.getISBN()+ " is already associated with the book", bookAlreadyExisting);
+			return;
+		}
 		bookRepository.save(bookToAdd);
 		bookOrdersView.bookAdded(bookToAdd);
 	}
