@@ -19,7 +19,8 @@ public class BookController {
 	}
 	
 	public void newBook(Book bookToAdd) {
-		
+		bookRepository.save(bookToAdd);
+		bookOrdersView.bookAdded(bookToAdd);
 	}
 
 }
