@@ -19,6 +19,7 @@ public class OrderController {
 	}
 
 	public void newOrder(Order orderToAdd) {
-		
+		orderRepository.save(orderToAdd);
+		bookOrdersView.orderAdded(orderToAdd);
 	}
 }
