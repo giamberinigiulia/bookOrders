@@ -30,6 +30,7 @@ public class OrderController {
 	}
 
 	public void deleteOrder(Order orderToRemove) {
-		
+		orderRepository.delete(orderToRemove.getID());
+		bookOrdersView.orderRemoved(orderToRemove);
 	}
 }
