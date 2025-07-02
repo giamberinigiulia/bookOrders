@@ -28,4 +28,8 @@ public class OrderController {
 		orderRepository.save(orderToAdd);
 		bookOrdersView.orderAdded(orderToAdd);
 	}
+
+	public void deleteOrder(Order orderToRemove) {
+		
+	}
 }

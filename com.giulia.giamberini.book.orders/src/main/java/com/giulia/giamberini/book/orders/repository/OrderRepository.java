@@ -12,4 +12,6 @@ public interface OrderRepository {
 
 	public void save(Order orderToAdd);
 
+	public void delete(String string);
+
 }

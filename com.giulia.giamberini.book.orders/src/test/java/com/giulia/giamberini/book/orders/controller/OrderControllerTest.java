@@ -72,4 +72,14 @@ public class OrderControllerTest {
 		verify(bookOrdersView).showErrorAlreadyExistingOrder("The order with id 1 already exists", existingOrder);
 		verifyNoMoreInteractions(ignoreStubs(orderRepository));
 	}
+	
+	@Test
+	public void testDeleteOrderWhenItExists() {
+		Order orderToRemove = new Order("1",asList(new Book()));
+		when(orderRepository.findByID("1")).thenReturn(orderToRemove);
+		orderController.deleteOrder(orderToRemove);
+		InOrder inOrder = inOrder(orderRepository, bookOrdersView);
+		inOrder.verify(orderRepository).delete("1");
+		inOrder.verify(bookOrdersView).orderRemoved(orderToRemove);
+	}
 }

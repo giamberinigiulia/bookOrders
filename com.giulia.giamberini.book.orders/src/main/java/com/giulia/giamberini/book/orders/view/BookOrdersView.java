@@ -19,4 +19,6 @@ public interface BookOrdersView {
 
 	void showErrorAlreadyExistingOrder(String string, Order existingOrder);
 
+	void orderRemoved(Order orderToRemove);
+
 }
