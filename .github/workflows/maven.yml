@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [8, 11, 17]
+        java: [11, 17]
 
     name: Build with Java ${{matrix.java}}
     steps:
@@ -19,7 +19,7 @@ jobs:
       with:
         java-version: ${{matrix.java}}
     - name: Cache packages Maven
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: ~/.m2
         key: ${{runner.os}}-m2-${{hashFiles('**/pom.xml', '**/*.yml')}}
