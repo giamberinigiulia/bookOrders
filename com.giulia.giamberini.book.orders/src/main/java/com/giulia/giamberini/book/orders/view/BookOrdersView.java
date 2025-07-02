@@ -10,4 +10,6 @@ public interface BookOrdersView {
 	
 	void bookAdded(Book bookToAdd);
 
+	void showErrorAlreadyExistingBook(String string, Book existingBook);
+
 }

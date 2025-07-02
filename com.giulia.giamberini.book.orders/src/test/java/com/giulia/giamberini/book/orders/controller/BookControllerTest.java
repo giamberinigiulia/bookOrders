@@ -1,7 +1,9 @@
 package com.giulia.giamberini.book.orders.controller;
 
+import static org.mockito.Mockito.ignoreStubs;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
@@ -60,4 +62,13 @@ public class BookControllerTest {
 		inOrder.verify(bookOrdersView).bookAdded(bookToAdd);
 	}
 
+	@Test
+	public void testNewBookAdeddWhenIsAlreadyPresent() {
+		Book existingBook = new Book("ISBN1","title","author","genre");
+		Book bookToAdd = new Book("ISBN1","new title","new author", "new genre");
+		when(bookRepository.findByISBN("ISBN1")).thenReturn(existingBook);
+		bookController.newBook(bookToAdd);
+		verify(bookOrdersView).showErrorAlreadyExistingBook("The ISBN ISBN1 is already associated with the book",existingBook);
+		verifyNoMoreInteractions(ignoreStubs(bookRepository));
+	}
 }
