@@ -17,4 +17,6 @@ public interface BookOrdersView {
 
 	void orderAdded(Order orderToAdd);
 
+	void showErrorAlreadyExistingOrder(String string, Order existingOrder);
+
 }
