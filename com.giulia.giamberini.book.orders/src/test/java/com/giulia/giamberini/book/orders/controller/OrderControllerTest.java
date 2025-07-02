@@ -1,5 +1,6 @@
 package com.giulia.giamberini.book.orders.controller;
 
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -9,10 +10,12 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import com.giulia.giamberini.book.orders.model.Book;
 import com.giulia.giamberini.book.orders.model.Order;
 import com.giulia.giamberini.book.orders.repository.OrderRepository;
 import com.giulia.giamberini.book.orders.view.BookOrdersView;
@@ -48,4 +51,13 @@ public class OrderControllerTest {
 		verify(bookOrdersView).showAllOrders(orders);
 	}
 
+	@Test
+	public void testNewOrderIsCreatedWhenItDoesntAlreadyExist() {
+		Order orderToAdd = new Order("1", Arrays.asList(new Book()));
+		when(orderRepository.findByID("1")).thenReturn(null);
+		orderController.newOrder(orderToAdd);
+		InOrder inOrder = inOrder(orderRepository, bookOrdersView);
+		inOrder.verify(orderRepository).save(orderToAdd);
+		inOrder.verify(bookOrdersView).orderAdded(orderToAdd);
+	}
 }

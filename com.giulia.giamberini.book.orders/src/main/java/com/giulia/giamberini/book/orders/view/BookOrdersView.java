@@ -15,4 +15,6 @@ public interface BookOrdersView {
 
 	void showAllOrders(List<Order> orders);
 
+	void orderAdded(Order orderToAdd);
+
 }

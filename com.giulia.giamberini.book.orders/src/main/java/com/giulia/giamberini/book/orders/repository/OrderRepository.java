@@ -8,4 +8,8 @@ public interface OrderRepository {
 
 	public List<Order> findAll();
 
+	public Order findByID(String string);
+
+	public void save(Order orderToAdd);
+
 }
