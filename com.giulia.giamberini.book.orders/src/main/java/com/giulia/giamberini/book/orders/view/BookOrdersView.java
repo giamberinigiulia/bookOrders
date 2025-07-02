@@ -1,4 +1,4 @@
-package com.giulia.giamberini.book.orders.controller;
+package com.giulia.giamberini.book.orders.view;
 
 import java.util.List;
 

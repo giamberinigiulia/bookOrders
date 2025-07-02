@@ -14,6 +14,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.giulia.giamberini.book.orders.model.Book;
+import com.giulia.giamberini.book.orders.repository.BookRepository;
+import com.giulia.giamberini.book.orders.view.BookOrdersView;
 
 public class BookControllerTest {
 
