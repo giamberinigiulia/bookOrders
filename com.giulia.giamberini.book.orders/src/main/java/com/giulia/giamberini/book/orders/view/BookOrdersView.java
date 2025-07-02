@@ -21,4 +21,6 @@ public interface BookOrdersView {
 
 	void orderRemoved(Order orderToRemove);
 
+	void showErrorNoOrderFound(String string, Order orderToRemove);
+
 }

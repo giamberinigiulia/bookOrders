@@ -82,4 +82,13 @@ public class OrderControllerTest {
 		inOrder.verify(orderRepository).delete("1");
 		inOrder.verify(bookOrdersView).orderRemoved(orderToRemove);
 	}
+	
+	@Test
+	public void testDeleteOrderWhenItDoesntExist() {
+		Order orderToRemove = new Order("1",asList(new Book()));
+		when(orderRepository.findByID("1")).thenReturn(null);
+		orderController.deleteOrder(orderToRemove);
+		verify(bookOrdersView).showErrorNoOrderFound("The order with id 1 is not found",orderToRemove);
+		verifyNoMoreInteractions(ignoreStubs(orderRepository));
+	}
 }
