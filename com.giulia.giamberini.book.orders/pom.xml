@@ -43,6 +43,11 @@
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
 					<version>${jacoco-maven-plugin-version}</version>
+					<configuration>
+						<excludes>
+							<exclude>**/model/*.*</exclude> <!-- exclude the model folder from the code coverage report -->
+						</excludes>
+					</configuration>
 					<executions>
 						<execution>
 							<goals>
