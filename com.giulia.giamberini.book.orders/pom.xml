@@ -11,6 +11,7 @@
 	<name>book.orders</name>
 
 	<properties>
+		<coveralls-maven-plugin-version>4.3.0</coveralls-maven-plugin-version>
 		<jacoco-maven-plugin-version>0.8.13</jacoco-maven-plugin-version>
 		<mockito.version>4.11.0</mockito.version>
 		<junit-version>4.13.2</junit-version>
@@ -44,11 +45,16 @@
 					<executions>
 						<execution>
 							<goals>
-							<goal>prepare-agent</goal>
-							<goal>report</goal>
+								<goal>prepare-agent</goal>
+								<goal>report</goal>
 							</goals>
 						</execution>
 					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.eluder.coveralls</groupId>
+					<artifactId>coveralls-maven-plugin</artifactId>
+					<version>${coveralls-maven-plugin-version}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
